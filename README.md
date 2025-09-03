@@ -4,17 +4,18 @@ Bem-vindo ao meu espaço online! 🚀
 Aqui você vai encontrar um pouco sobre tenho 21 procurando entrar na area de tecnologia, trabalho atualmente com logistica e administração exercendo papel de Auxiliar Administrativo, possuo conhecimento avançado em Inglês além de estar aprendendo Japones e Mandarim.
 
 ## ✨ Sou
-☝️ Proativo
-✌️ Eficiente
-🤟 Envolvido
-🖖 Energetico
-✋ Sociavel
+☝️ Proativo <br>
+✌️ Eficiente <br>
+🤟 Envolvido <br>
+🖖 Energetico <br>
+✋ Sociavel <br>
 
-e alguns **Projetos** que desenvolvi.
-Jogo de Ritmo - [Colocar o link pro jogo que ja postei no github aqui]
-Site exemplo - [Colocar link do site do trabalho da facul]
-Site do portfolio - [Link do site do portfolio]
-App de celular - [Link de um app pra celular]
+  e alguns **Projetos** que desenvolvi. <br>
+  
+🎵  | Jogo de Ritmo - [Colocar o link pro jogo que ja postei no github aqui] <br>
+💻  | Site exemplo - [Colocar link do site do trabalho da facul] <br>
+🌟  | Site do portfolio - [Link do site do portfolio] <br>
+📱   | App de celular - [Link de um app pra celular] <br>
 
 ---
 
