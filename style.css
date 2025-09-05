@@ -65,7 +65,7 @@ html {
     opacity: 1;
   }
 }
-/* Palco wood floor */
+/* Palco */
 #stage-floor {
   position: absolute;
   bottom: 0;
@@ -137,7 +137,7 @@ html {
   bottom: 0px;
   left: 50%;
   transform: translateX(-50%) translateY(120px);
-  width: 2000px;
+  width: 1000px;
   opacity: 0;
   z-index: 25;
   transition: opacity 0.4s ease;
@@ -180,6 +180,7 @@ html {
 }
 
 /* --- ESTILOS NOVOS PARA OS CARDS E MODAL --- */
+/* --- ESTILOS NOVOS PARA OS CARDS E MODAL (VERSÃO FINAL CORRIGIDA) --- */
 #portfolio-section {
   padding: 24px 24px 60px;
   background: linear-gradient(135deg, #222, #444);
@@ -212,16 +213,19 @@ html {
   opacity: 1;
   pointer-events: all;
 }
+
+/* --- Container da Mão de Cartas (POSIÇÃO CORRIGIDA) --- */
 .card-hand-container {
   display: flex;
   justify-content: center;
-  /* CORREÇÃO 2: Alinha as cartas no topo e adiciona um espaço */
   align-items: flex-start; 
   padding-top: 50px;
-  min-height: 350px; /* Reduzimos a altura mínima */
+  min-height: 350px;
   position: relative;
   margin-top: 40px;
 }
+
+/* --- Estilo Base do Card --- */
 .project-card {
   width: 220px;
   height: 320px;
@@ -229,8 +233,9 @@ html {
   position: absolute;
   cursor: pointer;
   transform-origin: center bottom;
-  /* A transição agora é no .card-inner, não aqui */
 }
+
+/* Área de Hover Invisível e Estável */
 .project-card::before {
   content: '';
   position: absolute;
@@ -238,23 +243,32 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  /* Deixe esta linha com cor para depurar e ver a área, depois apague ou deixe transparente */
-  /* background-color: rgba(255, 0, 0, 0.2);  */
 }
-.project-card:hover {
-  z-index: 10 !important; /* Força a carta sobreposta a ficar por cima */
-  transition: transform 0.3s ease-out; /* Z-index sem delay na saída */
-  transform: translateY(-40px) scale(1.08) !important; /* Levanta e aumenta um pouco mais */
-}
+
+/* --- Estrutura Interna do Card (É ELA QUE SE MOVE) --- */
 .card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.3s ease-out; /* A transição veio para cá */
+  transition: transform 0.3s ease-out; /* A animação acontece aqui */
   transform-style: preserve-3d;
-  pointer-events: auto; /* Garante que o clique funcione */
+  pointer-events: auto;
 }
 
+/* Gatilho de Hover: afeta o .card-inner, eliminando o flicker */
+.project-card:hover .card-inner {
+  transform: translateY(-40px) scale(1.08);
+}
+
+/* --- Posição e Rotação de cada carta na "mão" --- */
+.project-card:nth-child(1) { transform: translateX(-240px) rotate(-20deg); z-index: 1; }
+.project-card:nth-child(2) { transform: translateX(-120px) rotate(-10deg); z-index: 2; }
+.project-card:nth-child(3) { transform: translateX(0px) rotate(0deg); z-index: 3; }
+.project-card:nth-child(4) { transform: translateX(120px) rotate(10deg); z-index: 4; }
+.project-card:nth-child(5) { transform: translateX(240px) rotate(20deg); z-index: 5; }
+
+
+/* --- Lógica para Virar o Card --- */
 .project-card.is-open .card-inner {
   transform: rotateY(180deg);
 }
@@ -268,27 +282,25 @@ html {
   border-radius: 15px;
   background-size: cover;
   background-position: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 .card-back {
-  background-image: url('Imagens/card_back.png'); /* Verifique se o nome do seu arquivo é este */
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  background-image: url('Imagens/card_back.png');
 }
 .card-front {
-  background-image: url('Imagens/card_front.png'); /* Verifique se o nome do seu arquivo é este */
+  background-image: url('Imagens/card_front.png');
   transform: rotateY(180deg);
   padding: 30px;
   box-sizing: border-box;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  text-align: center;
+  color: #f0e6d2;
 }
 .card-front h3 {
-  font-family: 'Georgia', serif;
   font-size: 1.5rem;
-  color: #f0e6d2;
   margin-bottom: 15px;
 }
 .card-front img {
@@ -299,33 +311,17 @@ html {
 }
 .card-front p {
   font-size: 0.9rem;
-  color: #c8b89d;
 }
-/* Posição de cada carta */
-.project-card:nth-child(1) { transform: translateX(-240px) rotate(-20deg); z-index: 1; }
-.project-card:nth-child(2) { transform: translateX(-120px) rotate(-10deg); z-index: 2; }
-.project-card:nth-child(3) { transform: translateX(0px) rotate(0deg); z-index: 3; }
-.project-card:nth-child(4) { transform: translateX(120px) rotate(10deg); z-index: 4; }
-.project-card:nth-child(5) { transform: translateX(240px) rotate(20deg); z-index: 5; }
-/* Adicione mais se tiver mais cartas */
 
+/* --- Estado Ativo (Clicado) --- */
 .project-card.is-open {
   position: fixed;
-  top: 50%;
+  top: 70%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.8) !important; /* Importante para sobrescrever o hover */
+  transform: translate(-50%, -50%) scale(1.8) !important;
   z-index: 100;
-  pointer-events: all; /* Garante que a carta aberta seja clicável */
 }
-.project-card.is-open ~ .project-card {
-  opacity: 0;
-  pointer-events: none;
-}
-.project-card:not(.is-open) {
-    /* Ajusta a opacidade das cartas não abertas quando uma está aberta */
-    opacity: 1; /* Garante que estejam visíveis por padrão */
-    pointer-events: all; /* Garante que sejam clicáveis por padrão */
-}
+/* Oculta as outras cartas quando uma está aberta */
 #projects-list:has(.project-card.is-open) .project-card:not(.is-open) {
   opacity: 0;
   pointer-events: none;
