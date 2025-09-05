@@ -55,7 +55,7 @@ Aqui você vai encontrar um pouco sobre tenho 21 procurando entrar na area de te
 
 - ✉️ **E-mail**: felipe.ortiz@univille.br
 - 💼 **LinkedIn**: (https://linkedin.com/in/felipe-ortiz-b692b5274)  
-- 📁 **Portfólio Online**: [seu-site.com](https://seu-site.com)  
+- 📁 **Portfólio Online**: (https://sallef.github.io/Portfolio/index.html)
 
 ---
 
