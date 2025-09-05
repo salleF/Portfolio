@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio Felipe Ortiz - Palco</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="modal-overlay"></div>
+
     <div
       id="stage-container"
       aria-label="Palco de apresentação com cortinas roxas, holofotes e um palco de madeira"
@@ -37,10 +38,7 @@
           alt="Foto redonda de Felipe Ortiz, jovem de cabelo cacheado, óculos, com fundo de monitor ao fundo"
         />
         <p>
-          <em
-            >Felipe Ortiz<br />21 anos<br />Estudante de Eng. de Software<br />Amante
-            de gatos e corvos</em
-          >
+          <em>Felipe Ortiz<br />21 anos<br />Estudante de Eng. de Software<br />Amante de gatos e corvos</em>
         </p>
       </div>
       <img
@@ -50,102 +48,67 @@
       />
     </div>
     <div id="separator" aria-hidden="true"></div>
+
     <section
       id="portfolio-section"
       aria-label="Portfólio e curriculo de projetos"
     >
-      <h2>Meus Sites e Apps</h2>
-      <div id="projects-list">
-        <div
-          class="project-card"
-          tabindex="0"
-          aria-label="Projeto Site Responsivo"
-        >
-          <h3>Site Responsivo</h3>
-          <p>Projeto de site adaptável para dispositivos móveis e desktop.</p>
-        </div>
-        <div
-          class="project-card"
-          tabindex="0"
-          aria-label="Projeto Gerenciador de Tarefas"
-        >
-          <h3>Gerenciador de Tarefas</h3>
-          <p>App para criar, editar e remover lista de tarefas diárias.</p>
-        </div>
-        <div
-          class="project-card"
-          tabindex="0"
-          aria-label="Projeto Jogo de Plataforma"
-        >
-          <h3>Jogo de Plataforma</h3>
-          <p>Jogo 2D divertido com desafios e fases.</p>
-        </div>
-        <div
-          class="project-card"
-          tabindex="0"
-          aria-label="Projeto Blog Pessoal"
-        >
-          <h3>Blog Pessoal</h3>
-          <p>Blog com artigos sobre tecnologias e desenvolvimento.</p>
+      <h2>Meus Projetos</h2>
+<div id="projects-list" class="card-hand-container">
+    <div class="project-card" tabindex="0">
+      <div class="card-inner">
+        <div class="card-back"></div>
+        <div class="card-front"><h3>Projeto 1</h3></div>
+      </div>
+    </div>
+    <div class="project-card" tabindex="0">
+      <div class="card-inner">
+        <div class="card-back"></div>
+        <div class="card-front"><h3>Projeto 2</h3></div>
+      </div>
+    </div>
+    <div class="project-card" tabindex="0">
+      <div class="card-inner">
+        <div class="card-back"></div>
+        <div class="card-front"><h3>Projeto 3</h3></div>
+      </div>
+    </div>
+    <div class="project-card" tabindex="0">
+        <div class="card-inner">
+          <div class="card-back"></div>
+          <div class="card-front"><h3>Projeto 4</h3></div>
         </div>
       </div>
-    </section>
+    <div class="project-card" tabindex="0">
+        <div class="card-inner">
+          <div class="card-back"></div>
+          <div class="card-front"><h3>Projeto 5</h3></div>
+        </div>
+      </div>
+</div>
 
-    <!-- Sound effect: clapping -->
+        <div class="project-card" tabindex="0" aria-label="Projeto Gerenciador de Tarefas">
+          <div class="card-inner">
+            <div class="card-back"></div>
+            <div class="card-front">
+              <h3>Gerenciador de Tarefas</h3>
+              <img src="Imagens/foto-gerenciador.png" alt="Preview do Gerenciador de Tarefas">
+              <p>App para criar, editar e remover lista de tarefas diárias com uma interface limpa.</p>
+            </div>
+          </div>
+        </div>
+        
+        </div>
+
+      <h2>Certificados</h2>
+      </section>
+
     <audio
       id="clap-sound"
       preload="auto"
       src="Imagens/Som de Aplausos ° Efeito Especial para seu vídeo. Sem direitos autorais.mp3"
     ></audio>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const curtainLeft = document.getElementById("curtain-left");
-        const curtainRight = document.getElementById("curtain-right");
-        const stageFloor = document.getElementById("stage-floor");
-        const spotlight = document.getElementById("spotlight");
-        const aboutMe = document.getElementById("about-me");
-        const handsClapping = document.getElementById("hands-clapping");
-        const separator = document.getElementById("separator");
-        const clapSound = document.getElementById("clap-sound");
-
-        // Step 1: Animate curtains in simultaneously
-        curtainLeft.classList.add("curtain-left-animate");
-        curtainRight.classList.add("curtain-right-animate");
-
-        // After curtains anim (1.6s), animate stage floor rise + spotlight drop started together
-        setTimeout(() => {
-          stageFloor.classList.add("stage-rise-animate");
-          spotlight.classList.add("spotlight-drop-animate");
-        }, 1600);
-
-        // After stage+spotlight anim (max 1.8s), show "sobre mim" content fade-in
-        setTimeout(() => {
-          aboutMe.classList.add("fade-in-text");
-        }, 1600 + 1800);
-
-        // After everything shows, hands clapping appear with audio for 3 seconds, then fade out
-        setTimeout(() => {
-          handsClapping.style.opacity = "1";
-          handsClapping.style.transform = "translateX(-50%) translateY(0)";
-          clapSound.currentTime = 0;
-          clapSound.play();
-
-          // Stop after 3 seconds and fade out
-          setTimeout(() => {
-            handsClapping.style.opacity = "0";
-            handsClapping.style.transform =
-              "translateX(-50%) translateY(120px)";
-            clapSound.pause();
-            clapSound.currentTime = 0;
-
-            // Show separator as fade in after hands disappear
-            setTimeout(() => {
-              separator.style.opacity = "1";
-            }, 800);
-          }, 3000);
-        }, 1600 + 1800 + 1600); // delay after all animations
-      });
-    </script>
+    
+    <script src="script.js" defer></script>
   </body>
 </html>
