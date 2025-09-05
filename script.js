@@ -1,4 +1,4 @@
-// --- CÓDIGO DA ANIMAÇÃO DO PALCO ---
+// LOGICA DO PALCO
 const curtainLeft = document.getElementById("curtain-left");
 const curtainRight = document.getElementById("curtain-right");
 const stageFloor = document.getElementById("stage-floor");
@@ -35,13 +35,13 @@ setTimeout(() => {
 }, 1600 + 1800 + 1600);
 
 
-// --- LÓGICA PARA OS CARDS DE PROJETO (COM CORREÇÃO) ---
+// LOGICA DAS CARTAS
 const projectCards = document.querySelectorAll(".project-card");
 const modalOverlay = document.getElementById("modal-overlay");
 
 projectCards.forEach(card => {
     card.addEventListener("click", (event) => {
-        event.stopPropagation(); // Impede o clique de "atravessar" para o overlay
+        event.stopPropagation(); 
 
         if (card.classList.contains("is-open")) {
             return;
